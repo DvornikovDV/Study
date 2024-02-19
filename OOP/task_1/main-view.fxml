@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dvornikovdv.oop_application.MainController">
+   <children>
+      <Button layoutX="414.0" layoutY="271.0" mnemonicParsing="false" onAction="#on_calculate" prefHeight="42.0" prefWidth="102.0" text="Run" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="35.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <ComboBox fx:id="ComboBox_operations" layoutX="30.0" layoutY="195.0" prefWidth="150.0" AnchorPane.leftAnchor="30.0" />
+      <Label layoutX="30.0" layoutY="175.0" text="Operation">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="28.0" text="Input your 1 vector">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TextField_vector_X0" layoutX="30.0" layoutY="48.0" prefHeight="25.0" prefWidth="75.0" text="3">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TextField_vector_Y0" layoutX="105.0" layoutY="48.0" prefHeight="25.0" prefWidth="75.0" text="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label layoutX="264.0" layoutY="28.0" text="Result:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="96.0" text="Input your 2 vector">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TextField_vector_X1" layoutX="30.0" layoutY="116.0" prefHeight="25.0" prefWidth="75.0" text="4">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="TextField_vector_Y1" layoutX="105.0" layoutY="116.0" prefHeight="25.0" prefWidth="75.0" text="5">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label fx:id="Label_result" layoutX="264.0" layoutY="53.0" text="-">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
