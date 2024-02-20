@@ -1,4 +1,4 @@
-// Дворников Даниил
+п»ї// Р”РІРѕСЂРЅРёРєРѕРІ Р”Р°РЅРёРёР»
 
 #pragma once
 
@@ -10,7 +10,7 @@
 #include <random>
 #include <string>
 
-// Pаскомментировать строку ниже, чтобы отключить assert()
+// PР°СЃРєРѕРјРјРµРЅС‚РёСЂРѕРІР°С‚СЊ СЃС‚СЂРѕРєСѓ РЅРёР¶Рµ, С‡С‚РѕР±С‹ РѕС‚РєР»СЋС‡РёС‚СЊ assert()
 //#define NDEBUG
 #include <cassert>
 
@@ -22,14 +22,14 @@ using std::string;
 const double eps = 1e-6;
 
 // double*, double, double
-/// Заполняет массив arr размера n псевдослучайными значениями в диапазоне от lower_limit до upper_limit
+/// Р—Р°РїРѕР»РЅСЏРµС‚ РјР°СЃСЃРёРІ arr СЂР°Р·РјРµСЂР° n РїСЃРµРІРґРѕСЃР»СѓС‡Р°Р№РЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ lower_limit РґРѕ upper_limit
 template<class Arr_type> void fill_arr_rand(Arr_type* arr, size_t n, double upper_limit, double lower_limit) {
 	for (size_t i{}; i < n; i++) {
 		arr[i] = lower_limit +  (rand()) / ( (RAND_MAX / (upper_limit - lower_limit)));
 	}
 };
 
-/// Выводит в консоль массив arr размера n
+/// Р’С‹РІРѕРґРёС‚ РІ РєРѕРЅСЃРѕР»СЊ РјР°СЃСЃРёРІ arr СЂР°Р·РјРµСЂР° n
 template<class Arr_type> void print_arr(Arr_type arr[], size_t n) {
 	cout << "Array : ";
 	for (size_t i{}; i < n; i++) {
@@ -39,7 +39,7 @@ template<class Arr_type> void print_arr(Arr_type arr[], size_t n) {
 	cout << endl;
 }
 
-/// Читает данные из файла file_name в массив arr размера n
+/// Р§РёС‚Р°РµС‚ РґР°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р° file_name РІ РјР°СЃСЃРёРІ arr СЂР°Р·РјРµСЂР° n
 template<class Arr_type> Arr_type* f_read_arr(Arr_type arr[], const string& file_name, size_t n) {
 	ifstream file_read(file_name);
 	//Arr_type* a;
@@ -62,7 +62,7 @@ template<class Arr_type> Arr_type* f_read_arr(Arr_type arr[], const string& file
 	return arr;
 }
 
-/// Записывает данные в файл file_name в массив arr размера n
+/// Р—Р°РїРёСЃС‹РІР°РµС‚ РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р» file_name РІ РјР°СЃСЃРёРІ arr СЂР°Р·РјРµСЂР° n
 template<class Arr_type> void f_save_arr(Arr_type arr[], const string& file_name, size_t n) {
 	ofstream file_write(file_name);
 
@@ -80,7 +80,7 @@ template<class Arr_type> void f_save_arr(Arr_type arr[], const string& file_name
 	file_write.close();
 }
 
-/// Возвращает индекс найденного числа value в массиве arr размера n, либо -1, если число не найдено
+/// Р’РѕР·РІСЂР°С‰Р°РµС‚ РёРЅРґРµРєСЃ РЅР°Р№РґРµРЅРЅРѕРіРѕ С‡РёСЃР»Р° value РІ РјР°СЃСЃРёРІРµ arr СЂР°Р·РјРµСЂР° n, Р»РёР±Рѕ -1, РµСЃР»Рё С‡РёСЃР»Рѕ РЅРµ РЅР°Р№РґРµРЅРѕ
 template<class Arr_type> long long incremental_search(Arr_type arr[], Arr_type value, size_t n) {
 	for (size_t i{}; i < n; i++) {
 		if (arr[i] == value) return i;
@@ -89,7 +89,7 @@ template<class Arr_type> long long incremental_search(Arr_type arr[], Arr_type v
 	return -1;
 }
 
-/// Проверяет, отсортирован ли массив по возрастанию
+/// РџСЂРѕРІРµСЂСЏРµС‚, РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅ Р»Рё РјР°СЃСЃРёРІ РїРѕ РІРѕР·СЂР°СЃС‚Р°РЅРёСЋ
 template<class Arr_type> bool is_sorted_up(Arr_type arr[], size_t n) {
 	Arr_type temp{ arr[0] };
 
@@ -101,7 +101,7 @@ template<class Arr_type> bool is_sorted_up(Arr_type arr[], size_t n) {
 	return true;
 }
 
-/// Проверяет, отсортирован ли массив по убыванию
+/// РџСЂРѕРІРµСЂСЏРµС‚, РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅ Р»Рё РјР°СЃСЃРёРІ РїРѕ СѓР±С‹РІР°РЅРёСЋ
 template<class Arr_type> bool is_sorted_down(Arr_type arr[], size_t n) {
 	Arr_type temp{ arr[0] };
 
@@ -109,9 +109,9 @@ template<class Arr_type> bool is_sorted_down(Arr_type arr[], size_t n) {
 		if (arr[i] > temp) return false;
 		temp = arr[i];
 	}
-	в
+	РІ
 	return true;
 }
 
-/// Тестирует функции
+/// РўРµСЃС‚РёСЂСѓРµС‚ С„СѓРЅРєС†РёРё
 void test();
