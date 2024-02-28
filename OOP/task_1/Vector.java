@@ -4,12 +4,18 @@ package org.dvornikovdv.oop_application;
 /** Класс Вектор */
 public class Vector {
     // Компоненты вектора
-    public float X;
-    public float Y;
+    public double X;
+    public double Y;
 
+    /** Коструктор без параметров */
     Vector() { this.X = 0; this.Y = 0; }
 
-    Vector(float x, float y){ this.X = x; this.Y = y; }
+    /** Коструктор с параметрами x и y */
+    Vector(double x, double y){ this.X = x; this.Y = y; }
+
+    Vector(Vector another) {
+       this(another.X, another.Y);
+    }
 
     /** Возвращает длину вектора */
     public double length_v(){
@@ -58,6 +64,6 @@ public class Vector {
     /** Преобразование полей класса в строку */
     @Override
     public String toString(){
-        return "( %s; %s)".formatted(Float.toString(this.X), Float.toString(this.Y));
+        return "( %s; %s)".formatted(Double.toString(this.X), Double.toString(this.Y));
     }
 }
