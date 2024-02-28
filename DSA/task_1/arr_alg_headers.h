@@ -1,4 +1,4 @@
-﻿// Дворников Даниил
+﻿// Дворников Даниил ИВТ-22
 
 #pragma once
 
@@ -39,7 +39,7 @@ template<class Arr_type> void print_arr(Arr_type arr[], size_t n) {
 	cout << endl;
 }
 
-/// Читает данные из файла file_name в массив arr размера n
+/// Читает данные из файла file_name в массив arr и размерность n
 template<class Arr_type> Arr_type* f_read_arr(Arr_type arr[], const string& file_name, size_t n) {
 	ifstream file_read(file_name);
 	//Arr_type* a;
@@ -62,7 +62,7 @@ template<class Arr_type> Arr_type* f_read_arr(Arr_type arr[], const string& file
 	return arr;
 }
 
-/// Записывает данные в файл file_name в массив arr размера n
+/// Записывает данные в файл file_name из массив arr и размерности n
 template<class Arr_type> void f_save_arr(Arr_type arr[], const string& file_name, size_t n) {
 	ofstream file_write(file_name);
 
@@ -80,16 +80,39 @@ template<class Arr_type> void f_save_arr(Arr_type arr[], const string& file_name
 	file_write.close();
 }
 
-/// Возвращает индекс найденного числа value в массиве arr размера n, либо -1, если число не найдено
-template<class Arr_type> long long incremental_search(Arr_type arr[], Arr_type value, size_t n) {
+/// Возвращает индекс найденного числа value в массиве arr размера n, либо -1, если число не найдено (последовательный поиск best - O(1), average - O(n), worst - O(n))
+template<class Arr_type> long long incremental_search(Arr_type arr[], Arr_type key, size_t n) {
 	for (size_t i{}; i < n; i++) {
-		if (arr[i] == value) return i;
+		if (arr[i] == key) return i;
 	}
 	
 	return -1;
 }
 
-/// Проверяет, отсортирован ли массив по возрастанию
+/// Возвращает индекс найденного числа value в массиве arr размера n, либо -1, если число не найдено (бинарный поиск  best - О(1), average - О(log(n)), worst - О(log(n)))
+template<class Arr_type> long long bin_search(Arr_type arr[], Arr_type key, size_t n) {
+
+	long midd = 0;
+	long left = 0;
+	long right = n;
+
+	while (1)
+	{
+		midd = (left + right) / 2;
+
+		if (key < arr[midd])       // если искомое меньше значения в ячейке
+			right = midd - 1;      // смещаем правую границу поиска
+		else if (key > arr[midd])  // если искомое больше значения в ячейке
+			left = midd + 1;	   // смещаем левую границу поиска
+		else                       // иначе (значения равны)
+			return midd;           // функция возвращает индекс ячейки
+
+		if (left > right)          // если границы сомкнулись 
+			return -1;
+	}
+}
+
+/// Проверяет, отсортирован ли массив arr размера n по возрастанию
 template<class Arr_type> bool is_sorted_up(Arr_type arr[], size_t n) {
 	Arr_type temp{ arr[0] };
 
@@ -101,7 +124,7 @@ template<class Arr_type> bool is_sorted_up(Arr_type arr[], size_t n) {
 	return true;
 }
 
-/// Проверяет, отсортирован ли массив по убыванию
+/// Проверяет, отсортирован ли массив arr размера n по убыванию
 template<class Arr_type> bool is_sorted_down(Arr_type arr[], size_t n) {
 	Arr_type temp{ arr[0] };
 
@@ -109,8 +132,23 @@ template<class Arr_type> bool is_sorted_down(Arr_type arr[], size_t n) {
 		if (arr[i] > temp) return false;
 		temp = arr[i];
 	}
-	в
+	
 	return true;
+}
+
+/// Сортирует массив по возрастанию (пузырьковая сортировка O(n^2))
+template<class Arr_type> void bubble_sort(Arr_type arr[], size_t n) {
+	Arr_type tmp{};
+
+	for (size_t i{}; i < n; i++) {
+		for (size_t j{}; j < n - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+			}
+		}
+	}
 }
 
 /// Тестирует функции

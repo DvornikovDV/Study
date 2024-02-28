@@ -1,4 +1,4 @@
-﻿// Дворников Даниил
+﻿// Дворников Даниил ИВТ-22
 
 #include "arr_alg_headers.h"
 
@@ -15,7 +15,7 @@ void test() {
 
 	a[0] = 1.1; a[1] = 2.2; a[2] = 4.4; a[3] = 3.3; a[4] = 5.5;
 
-	
+	/// тест файлов
 	{const string file_name = "test_file.txt";
 		try {
 			f_save_arr(a, file_name, n);
@@ -34,12 +34,42 @@ void test() {
 		assert((b[4] - 5.5) < eps);
 	}
 	
-	assert((incremental_search(b, 5.5, n) - 4) < eps);
+	
+	/// тест последовательного поиска
+	assert((incremental_search(b, 5.5, n) - 4) == 0);
+	assert((incremental_search(b, 2.2, n) - 1) == 0);
+	assert(incremental_search(b, 1.1, n) == 0);
+	assert((incremental_search(b, 0.0, n) + 1) == 0);
+	
+	{ /// тест бинарного поиска
+		size_t n{ 5 };
+		double* c = new double[n];
+		a[0] = 1.1; a[1] = 2.2; a[2] = 3.3; a[3] = 3.3; a[4] = 5.5;
 
-	assert(static_cast<int>(is_sorted_up(b, n)) < eps);
-	assert(static_cast<int>(is_sorted_down(b, n)) < eps);
+		assert((bin_search(b, 0.0, n) + 1) < eps);
+		assert(bin_search(b, 1.1, n) < eps);
+		assert((bin_search(b, 2.2, n) - 1) < eps);
+		assert((bin_search(b, 5.5, n) - 4) < eps);
 
-	a[2] = 2.2; a[3] = 4.4;
-	assert(static_cast<int>(is_sorted_up(b, n)) - 1 < eps);
+		delete[] c;
+	}
+
+	assert(static_cast<int>(is_sorted_up(b, n)) == false);
+	assert(static_cast<int>(is_sorted_down(b, n)) == false);
+
+	/// тест сортировок
+	bubble_sort(b, n);
+	assert(is_sorted_up(b, n) == true);
+
+	a[0] = 1.1; a[1] = 2.2; a[2] = 3.3; a[3] = 4.4; a[4] = 5.5;
+	bubble_sort(a, n);
+	assert(static_cast<int>(is_sorted_up(a, n)) == true);
+
+	a[0] = 5.5; a[1] = 4.4; a[2] = 3.3; a[3] = 2.2; a[4] = 1.1;
+	bubble_sort(a, n);
+	assert(static_cast<int>(is_sorted_up(a, n)) == true);
+
+	delete[] b;
+	delete[] a;
 }
 // assert(() < eps);
