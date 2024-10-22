@@ -1,7 +1,9 @@
 // Дворников Даниил ИВТ-22
+#![allow(non_snake_case)]
 
 pub mod BinSearchTree;
 pub mod BinaryTree;
+pub mod List;
 
 /// Псевдоним типа для указателя на узел дерева
 type Node<T> = Option<Box<BinTreeNode<T>>>;
@@ -16,7 +18,7 @@ pub struct BinTreeNode<T> {
 
 impl<T> BinTreeNode<T>
 where
-    T: Clone {
+    T: Clone + PartialEq {
     /// Создает и возвращает экземпляр узда дерева со значением value
     pub fn new(value: T) -> Self {
         BinTreeNode {

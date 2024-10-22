@@ -3,7 +3,7 @@
 use std::cmp;
 use crate::{BinTreeNode, Node};
 
-
+#[derive(Clone)]
 /// Бинарное дерево
 pub struct BinaryTree<T> {
     pub root: Node<T>,
@@ -21,28 +21,6 @@ where
                 left: None,
                 right: None,
             })),
-        }
-    }
-
-    /// Создает и возвращает копию экземпляра бинарного дерева
-    pub fn my_clone(&self) -> Self {
-        match self.root {
-            Some(ref root) => {
-                BinaryTree {
-                    root: Some(Box::new(BinTreeNode {
-                        value: root.value.clone(),
-                        left: match root.left {
-                            Some(ref node) => { Some(Box::new(node.my_clone())) },
-                            None => { None },
-                        },
-                        right: match root.right {
-                            Some(ref node) => { Some(Box::new(node.my_clone())) },
-                            None => { None },
-                        },
-                    })),
-                }
-            },
-            None => BinaryTree{ root: None }
         }
     }
 
@@ -209,3 +187,198 @@ where
         res.push(node.value.clone());
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn new() {
+        let bt = BinaryTree::new(4);
+
+        let expect = 4;
+        let actual = bt.root.as_ref().unwrap().value;
+
+        assert_eq!(expect, actual)
+    }
+
+    #[test]
+    fn to_vec() {
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_left(2);
+        bt.root.as_mut().unwrap().insert_right(4);
+        bt.root.as_mut().unwrap().left.as_mut().unwrap().insert_left(1);
+        bt.root.as_mut().unwrap().right.as_mut().unwrap().insert_right(5);
+
+        // preorder
+        let expect = vec![3, 2, 1, 4, 5];
+        let actual = bt.to_vec_pre();
+
+        assert_eq!(expect, actual);
+
+        // inorder
+        let expect = vec![1, 2, 3, 4, 5];
+        let actual = bt.to_vec_in();
+
+        assert_eq!(expect, actual);
+
+        // postorder
+        let expect = vec![1, 2, 5, 4, 3];
+        let actual = bt.to_vec_post();
+
+        assert_eq!(expect, actual);
+    }
+
+    #[test]
+    fn apply() {
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_left(2);
+        bt.root.as_mut().unwrap().insert_right(4);
+        bt.root.as_mut().unwrap().left.as_mut().unwrap().insert_left(1);
+        bt.root.as_mut().unwrap().right.as_mut().unwrap().insert_right(5);
+
+        bt.apply(|val| {
+            *val *= 2
+        });
+
+        let expect = vec![6, 4, 2, 8, 10];
+        let actual = bt.to_vec_pre();
+
+        assert_eq!(expect, actual);
+
+        let mut bt = BinaryTree::new(3);
+        bt.apply(|val| {
+            *val *= 2
+        });
+
+        let expect = vec![6];
+        let actual = bt.to_vec_pre();
+
+        assert_eq!(expect, actual);
+    }
+
+    #[test]
+    fn depth() {
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_left(2);
+        bt.root.as_mut().unwrap().insert_right(4);
+        bt.root.as_mut().unwrap().left.as_mut().unwrap().insert_left(1);
+        bt.root.as_mut().unwrap().right.as_mut().unwrap().insert_right(5);
+
+        let expect = 3;
+        let actual = bt.depth();
+
+        assert_eq!(expect, actual);
+
+        // left | right
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_left(2);
+        bt.root.as_mut().unwrap().insert_right(4);
+
+        let expect = 2;
+        let actual = bt.depth();
+
+        assert_eq!(expect, actual);
+
+        // left | None
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_left(2);
+
+        let expect = 2;
+        let actual = bt.depth();
+
+        assert_eq!(expect, actual);
+
+        // None | right
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_right(4);
+
+        let expect = 2;
+        let actual = bt.depth();
+
+        assert_eq!(expect, actual);
+
+        // root
+        let mut bt = BinaryTree::new(3);
+
+        let expect = 1;
+        let actual = bt.depth();
+
+        assert_eq!(expect, actual);
+    }
+
+    #[test]
+    fn count() {
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_left(2);
+        bt.root.as_mut().unwrap().insert_right(4);
+        bt.root.as_mut().unwrap().left.as_mut().unwrap().insert_left(1);
+        bt.root.as_mut().unwrap().right.as_mut().unwrap().insert_right(5);
+
+        let expect = 5;
+        let actual = bt.count();
+
+        assert_eq!(expect, actual);
+
+        // left | right
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_left(2);
+        bt.root.as_mut().unwrap().insert_right(4);
+
+        let expect = 3;
+        let actual = bt.count();
+
+        assert_eq!(expect, actual);
+
+        // left | None
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_left(2);
+
+        let expect = 2;
+        let actual = bt.count();
+
+        assert_eq!(expect, actual);
+
+        // None | right
+        let mut bt = BinaryTree::new(3);
+        bt.root.as_mut().unwrap().insert_right(4);
+
+        let expect = 2;
+        let actual = bt.count();
+
+        assert_eq!(expect, actual);
+
+        // root
+        let mut bt = BinaryTree::new(3);
+
+        let expect = 1;
+        let actual = bt.count();
+
+        assert_eq!(expect, actual);
+    }
+}
+
+
+/*
+/// Создает и возвращает копию экземпляра бинарного дерева
+    pub fn my_clone(&self) -> Self {
+        match self.root {
+            Some(ref root) => {
+                BinaryTree {
+                    root: Some(Box::new(BinTreeNode {
+                        value: root.value.clone(),
+                        left: match root.left {
+                            Some(ref node) => { Some(Box::new(node.my_clone())) },
+                            None => { None },
+                        },
+                        right: match root.right {
+                            Some(ref node) => { Some(Box::new(node.my_clone())) },
+                            None => { None },
+                        },
+                    })),
+                }
+            },
+            None => BinaryTree{ root: None }
+        }
+    }
+*/

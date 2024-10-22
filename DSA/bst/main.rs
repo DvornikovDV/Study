@@ -1,8 +1,9 @@
 // Дворников Даниил ИВТ-22
 
-
+use std::collections::LinkedList;
 use BinTree::BinaryTree::BinaryTree;
 use BinTree::BinSearchTree::BinSearchTree;
+use BinTree::List::List;
 
 fn main() {
     // Создание экземпляра узла дерева
@@ -24,7 +25,7 @@ fn main() {
     });
 
     // Копирование
-    let mut b = a.my_clone();
+    let b = a.clone();
 
     // Вывод дерева nlr, количество
     b.print_pre();
@@ -51,9 +52,51 @@ fn main() {
     println!("remove: {}", a.remove(v));
 
     // Поиск узла со значением v
-    println!("{:?}", a.bin_search(&v));
+    println!("-----{:?}", a.bin_search(&v));
 
+    // Итератор - неизменяемые ссылки на узлы дерева
+    for b in &a {
+        print!("{}  ", b.as_ref().unwrap().value);
+    }
+    println!("\n");
+
+    // Итератор - изменяемые ссылки на узлы дерева
+    for b in &mut a {
+        *b += 1;
+    }
     a.print_pre();
+
+    let mut v: Vec<i32> = Vec::new();
+    // Итератор - перемещенные узлы дерева
+    for b in a {
+        v.push(b);
+    }
+    println!("{:?}", v);
+
+    //a.to_vec_pre(); // use value after being moved
+
+    /*Same~
+    let mut iter = IntoIterator::into_iter(&a);
+    loop {
+        match iter.next() {
+            Some(x) => {
+                print!("{}  ", x.as_ref().unwrap().value);
+            },
+            None => break,
+        }
+    }
+    */
+
+    let mut list: List<i32> = List(LinkedList::new());
+
+    list.0.push_back(1);
+    list.0.push_back(2);
+    list.0.push_back(3);
+
+    for i in list {
+        println!("{i}")
+    }
+
 
 }
 /*
