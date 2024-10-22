@@ -457,16 +457,19 @@ mod tests {
     fn insert() {
         let mut bst = BinSearchTree::new();
 
+        // insert root
         bst.insert(4);
         let expect = 4;
         let actual = bst.root.as_ref().unwrap().value;
         assert_eq!(expect, actual);
 
+        // insert left
         bst.insert(2);
         let expect = 2;
         let actual = bst.root.as_ref().unwrap().left.as_ref().unwrap().value;
         assert_eq!(expect, actual);
 
+        // insert right
         bst.insert(5);
         let expect = 5;
         let actual = bst.root.as_ref().unwrap().right.as_ref().unwrap().value;
@@ -475,6 +478,7 @@ mod tests {
 
     #[test]
     fn to_vec_pre() {
+        // rand bst
         let mut bst = BinSearchTree::new();
         bst.insert(4);
         bst.insert(3);
@@ -487,9 +491,11 @@ mod tests {
 
         assert_eq!(expect, actual);
 
+        // empty bst
         let bst: BinSearchTree<i32> = BinSearchTree::new();
         let expect: Vec<&i32> = Vec::new();
         let actual = bst.to_vec_pre();
+        assert_eq!(expect, actual);
     }
 
     #[test]
@@ -508,6 +514,7 @@ mod tests {
         let mut bst = BinSearchTree::new();
         bst.insert(4).insert(3).insert(7).insert(6).insert(9);
 
+        // rand search
         let expect = 6;
         let actual = bst.bin_search(&6).unwrap().value;
         assert_eq!(expect, actual);
@@ -520,10 +527,12 @@ mod tests {
         let actual = bst.bin_search(&9).unwrap().value;
         assert_eq!(expect, actual);
 
+        // not found
         let expect = None;
         let actual = bst.bin_search(&1);
         assert_eq!(expect, actual);
 
+        // search in empty bst
         let mut bst: BinSearchTree<i32> = BinSearchTree::new();
         let expect = None;
         let actual = bst.bin_search(&1);
@@ -535,18 +544,22 @@ mod tests {
         let mut bst = BinSearchTree::new();
         bst.insert(4).insert(3).insert(7).insert(6).insert(9);
 
+        // rand search
         let expect = vec![4, 7, 9];
         let actual = bst.bin_search_vec(&9).unwrap();
         assert_eq!(expect, actual);
 
+        // not found
         let expect = None;
         let actual = bst.bin_search_vec(&1);
         assert_eq!(expect, actual);
 
+        // root search
         let expect = vec![4];
         let actual = bst.bin_search_vec(&4).unwrap();
         assert_eq!(expect, actual);
 
+        // search in empty bst
         let bst: BinSearchTree<i32> = BinSearchTree::new();
         let expect = None;
         let actual = bst.bin_search_vec(&1);
@@ -558,10 +571,12 @@ mod tests {
         let mut bst = BinSearchTree::new();
         bst.insert(4).insert(3).insert(7).insert(6).insert(9);
 
+        // succ for root
         let expect = 4;
         let actual = bst.succ(&3).unwrap();
         assert_eq!(expect, actual);
 
+        // succ for any
         let expect = 6;
         let actual = bst.succ(&4).unwrap();
         assert_eq!(expect, actual);
@@ -574,10 +589,12 @@ mod tests {
         let actual = bst.succ(&7).unwrap();
         assert_eq!(expect, actual);
 
+        // succ for max node value in bst
         let expect = None;
         let actual = bst.succ(&9);
         assert_eq!(expect, actual);
 
+        // succ in empty bst
         let mut bst: BinSearchTree<i32> = BinSearchTree::new();
         let expect = None;
         let actual = bst.succ(&9);
@@ -589,32 +606,38 @@ mod tests {
         let mut bst = BinSearchTree::new();
         bst.insert(4).insert(3).insert(7).insert(6).insert(9);
 
+        // last right
         bst.remove(9);
         let expect = vec![&4, &3, &7, &6];
         let actual = bst.to_vec_pre();
         assert_eq!(expect, actual);
 
+        // node with right and left subtree
         bst.insert(9);
         bst.remove(7);
         let expect = vec![&4, &3, &9, &6];
         let actual = bst.to_vec_pre();
         assert_eq!(expect, actual);
 
+        // last left
         bst.remove(6);
         let expect = vec![&4, &3, &9];
         let actual = bst.to_vec_pre();
         assert_eq!(expect, actual);
 
+        // last left
         bst.remove(3);
         let expect = vec![&4, &9];
         let actual = bst.to_vec_pre();
         assert_eq!(expect, actual);
 
+        // remove root (and all tree)
         bst.remove(4);
         let expect: Vec<&i32>= Vec::new();
         let actual = bst.to_vec_pre();
         assert_eq!(expect, actual);
 
+        // not exist
         let expect = false;
         let actual = bst.remove(4);
         assert_eq!(expect, actual);
@@ -626,6 +649,7 @@ mod tests {
         bst.insert(4).insert(3).insert(7).insert(6).insert(9);
         let mut bit = (&mut bst).into_iter();
 
+        // next for each elem of iterator
         let expect = 9;
         let actual = *bit.next().unwrap();
         assert_eq!(expect, actual);
@@ -642,14 +666,17 @@ mod tests {
         let actual = *bit.next().unwrap();
         assert_eq!(expect, actual);
 
+        // last elem
         let expect = 4;
         let actual = *bit.next().unwrap();
         assert_eq!(expect, actual);
 
+        // end of iter
         let expect = None;
         let actual = bit.next();
         assert_eq!(expect, actual);
 
+        // iter for empty bst
         let mut bst: BinSearchTree<i32> = BinSearchTree::new();
         let mut bit = (&mut bst).into_iter();
         let expect = None;
@@ -663,6 +690,7 @@ mod tests {
         bst.insert(4).insert(3).insert(7).insert(6).insert(9);
         let mut bit = bst.into_iter();
 
+        // next for each elem of iterator
         let expect = 9;
         let actual = bit.next().unwrap();
         assert_eq!(expect, actual);
@@ -679,20 +707,17 @@ mod tests {
         let actual = bit.next().unwrap();
         assert_eq!(expect, actual);
 
+        // last elem
         let expect = 4;
         let actual = bit.next().unwrap();
         assert_eq!(expect, actual);
 
+        // end of iter
         let expect = None;
         let actual = bit.next();
         assert_eq!(expect, actual);
 
-        let b: BinSearchTree<i32> = BinSearchTree::new();
-        b.into_iter();
-        let expect = None;
-        let actual = bit.next();
-        assert_eq!(expect, actual);
-
+        // iter for empty bst
         let bst: BinSearchTree<i32> = BinSearchTree::new();
         let mut bit = bst.into_iter();
         let expect = None;
@@ -706,6 +731,7 @@ mod tests {
         bst.insert(4).insert(3).insert(7).insert(6).insert(9);
         let mut bit = (&bst).into_iter();
 
+        // next for each elem of iterator
         let expect = 3;
         let actual = bit.next().unwrap().as_ref().unwrap().value;
         assert_eq!(expect, actual);
@@ -722,14 +748,17 @@ mod tests {
         let actual = bit.next().unwrap().as_ref().unwrap().value;
         assert_eq!(expect, actual);
 
+        // last elem
         let expect = 9;
         let actual = bit.next().unwrap().as_ref().unwrap().value;
         assert_eq!(expect, actual);
 
+        // end of iter
         let expect = None;
         let actual = bit.next();
         assert_eq!(expect, actual);
 
+        // iter for empty bst
         let bst: BinSearchTree<i32> = BinSearchTree::new();
         let mut bit = (&bst).into_iter();
         let expect = None;

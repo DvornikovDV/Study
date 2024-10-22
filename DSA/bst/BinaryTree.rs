@@ -231,6 +231,7 @@ mod tests {
 
     #[test]
     fn apply() {
+        // Any BinTree
         let mut bt = BinaryTree::new(3);
         bt.root.as_mut().unwrap().insert_left(2);
         bt.root.as_mut().unwrap().insert_right(4);
@@ -246,6 +247,7 @@ mod tests {
 
         assert_eq!(expect, actual);
 
+        // BinTree with only root
         let mut bt = BinaryTree::new(3);
         bt.apply(|val| {
             *val *= 2
@@ -259,6 +261,7 @@ mod tests {
 
     #[test]
     fn depth() {
+        // Depth for rand tree
         let mut bt = BinaryTree::new(3);
         bt.root.as_mut().unwrap().insert_left(2);
         bt.root.as_mut().unwrap().insert_right(4);
@@ -298,7 +301,7 @@ mod tests {
 
         assert_eq!(expect, actual);
 
-        // root
+        // only root
         let mut bt = BinaryTree::new(3);
 
         let expect = 1;
@@ -309,6 +312,7 @@ mod tests {
 
     #[test]
     fn count() {
+        // Count of nodes for rand tree
         let mut bt = BinaryTree::new(3);
         bt.root.as_mut().unwrap().insert_left(2);
         bt.root.as_mut().unwrap().insert_right(4);
