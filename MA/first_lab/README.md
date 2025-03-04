@@ -61,4 +61,4 @@
 
 ## Результаты
 Рабочий проект доступен в репозитории:  
-[GitHub репозиторий](https://github.com/Stanlycore/University.git)
+[GitHub репозиторий](https://github.com/DvornikovDV/Study/edit/main/MA/first_lab)
