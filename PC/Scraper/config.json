@@ -1,0 +1,14 @@
+{
+    "https://habr.com/ru/flows/develop/news/": {
+        "title_selector": "a.tm-title__link",
+        "date_selector": "div.tm-article-snippet.tm-article-snippet > div.tm-article-snippet__meta-container > div > span > span > a.tm-article-datetime-published.tm-article-datetime-published_link > time",
+        "author_selector": "a.tm-user-info__username",
+        "hubs_selector": "div.tm-article-snippet.tm-article-snippet > div.tm-publication-hubs__container > div > span",
+        "pagination_selector": "a.tm-pagination__page",
+        "headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+        }
+    }
+}
+
+
