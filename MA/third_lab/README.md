@@ -1,4 +1,16 @@
-Вариант 5. 
-Реализовать калькулятор расчета первой космической скорости. 
-На первом экране должны располагаться 2 числовых поля ввода (масса небесного тела и радиус небесного тела), а также чек-бокс на согласие обработки данных. 
-Реализовать валидацию полей и чек-бокса. Передать данные с первого экрана на второй экран произвести расчеты и отобразить.
+# lab_2_cosmic_calc
+
+A new Flutter project.
+
+## Getting Started
+
+This project is a starting point for a Flutter application.
+
+A few resources to get you started if this is your first Flutter project:
+
+- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
+- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+
+For help getting started with Flutter development, view the
+[online documentation](https://docs.flutter.dev/), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.
