@@ -1,0 +1,52 @@
+﻿<Window x:Class="ImageFilterApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Image Filter App" WindowState="Maximized">
+    <Grid>
+        <!-- Определение строк -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Панель управления -->
+            <RowDefinition Height="*"/>
+            <!-- Изображения -->
+            <RowDefinition Height="Auto"/>
+            <!-- Progress Bar -->
+        </Grid.RowDefinitions>
+
+        <!-- Top Panel -->
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10">
+            <Button x:Name="LoadImageButton" Content="Выбрать изображение" Click="LoadImage_Click" Width="150" Margin="5"/>
+            <ComboBox x:Name="FilterComboBox" Width="150" Margin="5">
+                <ComboBoxItem Content="Blur" IsSelected="True"/>
+                <ComboBoxItem Content="Edge Detection"/>
+                <ComboBoxItem Content="Sharpen"/>
+                <ComboBoxItem Content="Emboss"/>
+                <ComboBoxItem Content="Even Blur"/>
+                <ComboBoxItem Content="Strong Blur"/>
+            </ComboBox>
+            <ComboBox x:Name="ExecutionModeComboBox" Width="150" Margin="5">
+                <ComboBoxItem Content="Основной поток" IsSelected="True"/>
+                <ComboBoxItem Content="Дополнительный поток"/>
+            </ComboBox>
+            <Button Content="Применить фильтр" Click="ApplyFilter_Click" Width="150" Margin="5" x:Name="ApplyFilterButton"/>
+            <Button Content="Сохранить" Click="SaveImage_Click" Width="150" Margin="5" x:Name="SaveImageButton"/>
+            <Button Content="Приостановить" Click="Pause_Click" Width="150" Margin="5" x:Name="PauseButton"/>
+            <Button Content="Продолжить" Click="Resume_Click" Width="150" Margin="5" x:Name="ResumeButton"/>
+            <Button Content="Отмена" Click="Cancel_Click" Width="150" Margin="5" x:Name="CancelButton"/>
+        </StackPanel>
+
+        <!-- Image Display -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="OriginalImage" Stretch="Uniform" Margin="10"/>
+            <Image x:Name="FilteredImage" Stretch="Uniform" Grid.Column="1" Margin="10"/>
+        </Grid>
+
+        <!-- Progress Bar -->
+        <ProgressBar x:Name="Progress" Grid.Row="2" Height="20" Margin="10" Minimum="0" Maximum="100"
+                     HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>
