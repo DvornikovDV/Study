@@ -25,13 +25,13 @@
 			style="background-color:black">
 			<rect id="bgr" onclick="ShowAutopilotData = !ShowAutopilotData" x="0" y="0" width="1920" height="1080" fill=rgb(224,224,224) stroke-width="0"/>
 
-			<polygon id="Land" onclick="ShowTrueLand = !ShowTrueLand" points="0,720,1920,720,1920,1080,0,1080" stroke="green" fill=rgb(142,103,64) stroke-width="5"/>
-			<polygon id="AirField" points="900,740,880,720,960,720,940,740" stroke="black" fill="gray" stroke-width="5"/>
+			<polygon id="Land" onclick="ShowTrueLand = !ShowTrueLand" points="0,800, 200,500, 400,750, 600,550, 800,900, 1000,900, 1200,800, 1400,550, 1600,750, 1800,500, 1920,800, 1920,1080, 0,1080" stroke="green" fill=rgb(142,103,64) stroke-width="5"/>
+			<polygon id="AirField" points="950,610,930,590,970,590,950,610" stroke="black" fill="gray" stroke-width="5"/>
 
 			<polyline id="AutopilotLand" points="0,1080,1920,1080" fill="none" stroke="red" stroke-width="3" visibility="hidden"/>
 			<polyline id="AutopilotWPs" points="0,1080,1920,1080" fill="none" stroke="yellow" stroke-width="3" visibility="hidden"/>
 
-			<g id="Korabl" transform="translate(940,100)">
+			<g id="Korabl" transform="translate(1700,100)">
 				<g id="IsAlive" visibility="show">
 					<polygon id="En1" points="1,25,13,25,6,37" stroke="red" fill="yellow" stroke-width="2" visibility="hidden"/>
 					<polygon id="En2" points="14,30,26,30,20,40" stroke="red" fill="yellow" stroke-width="2" visibility="hidden"/>
@@ -49,77 +49,24 @@
 			</g>
 
 			<g transform="translate(100,0)">
-				<text x= "0" y="25" font-size="20" font-weight="bold" font-family="Arial">Крен:</text><text id="Angle" x= "120" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x= "250" y="25" font-size="20" font-weight="bold" font-family="Arial">Вращение:</text><text id="RS" x= "430" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x= "550" y="25" font-size="20" font-weight="bold" font-family="Arial">Скорость X:</text><text id="HS" x= "740" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x= "860" y="25" font-size="20" font-weight="bold" font-family="Arial">X:</text><text id="X" x= "970" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x= "1070" y="25" font-size="20" font-weight="bold" font-family="Arial">Y:</text><text id="Y" x= "1180" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x= "1280" y="25" font-size="20" font-weight="bold" font-family="Arial">Скорость Y:</text><text id="VS" x= "1470" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x= "1590" y="25" font-size="20" font-weight="bold" font-family="Arial">Высота:</text><text id="Height" x= "1750" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="0" y="25" font-size="20" font-weight="bold" font-family="Arial">Крен:</text><text id="Angle" x="120" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="250" y="25" font-size="20" font-weight="bold" font-family="Arial">Вращение:</text><text id="RS" x="430" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="550" y="25" font-size="20" font-weight="bold" font-family="Arial">Скорость X:</text><text id="HS" x="740" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="860" y="25" font-size="20" font-weight="bold" font-family="Arial">X:</text><text id="X" x="970" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="1070" y="25" font-size="20" font-weight="bold" font-family="Arial">Y:</text><text id="Y" x="1180" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="1280" y="25" font-size="20" font-weight="bold" font-family="Arial">Скорость Y:</text><text id="VS" x="1470" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="1590" y="25" font-size="20" font-weight="bold" font-family="Arial">Высота:</text><text id="Height" x="1750" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
 			</g>
 			<g transform="translate(20,1030)">
-				<text x= "0" y="30" font-size="20" font-weight="bold" font-family="Arial">Крушения:</text><text id="Crashes" x= "220" y="30" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
-				<text x= "0" y="0" font-size="20" font-weight="bold" font-family="Arial">Посадки:</text><text id="Landings" x= "220" y="0" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
-				<text x= "0" y="-30" font-size="20" font-weight="bold" font-family="Arial">Время:</text><text id="RemainingTime" x= "220" y="-30" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
+				<text x="0" y="30" font-size="20" font-weight="bold" font-family="Arial">Крушения:</text><text id="Crashes" x="220" y="30" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
+				<text x="0" y="0" font-size="20" font-weight="bold" font-family="Arial">Посадки:</text><text id="Landings" x="220" y="0" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
+				<text x="0" y="-30" font-size="20" font-weight="bold" font-family="Arial">Время:</text><text id="RemainingTime" x="220" y="-30" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
 			</g>
 		</svg>
 
 		<script>
 			var ShowTrueLand = true;
 			var LandReqCompl = true;
-			function GetLand(){
-				if (LandReqCompl){
-					LandReqCompl = false;
-					var Landreq = new XMLHttpRequest();
-					Landreq.onreadystatechange = function(){
-						if (Landreq.readyState == 4){
-							if(Landreq.status == 200){
-								var LandPoints = Landreq.response;
-								if (LandPoints != null){
-									if (!ShowAutopilotData || ShowTrueLand){
-										document.getElementById("Land").setAttribute('points', LandPoints);
-									}
-								}
-							}
-							LandReqCompl = true;
-						}
-					}
-					Landreq.onloadend = function(){
-						LandReqCompl = true;
-					}
-					Landreq.open('GET', '/fly?SID=' + document.getElementById('SessionID').value + '&CMD=GetLandPoints');
-					Landreq.timeout = 5000;
-					Landreq.responseType = 'text';
-					Landreq.send();
-				}
-			}
-			GetLand()
-			setInterval(GetLand, 250);
-
-			var AirFieldReqCompl = true;
-			function GetAirField(){
-				if (AirFieldReqCompl){
-					AirFieldReqCompl = false;
-					var AirFieldreq = new XMLHttpRequest();
-					AirFieldreq.onreadystatechange = function(){
-						if (AirFieldreq.readyState == 4){
-							if(AirFieldreq.status == 200){
-								var AirFieldPoints = AirFieldreq.response;
-								if (AirFieldPoints != null){
-									document.getElementById("AirField").setAttribute('points', AirFieldPoints);
-								}
-							}
-							AirFieldReqCompl = true;
-						}
-					}
-					AirFieldreq.open('GET', '/fly?SID=' + document.getElementById('SessionID').value + '&CMD=GetAirFieldPoints');
-					AirFieldreq.timeout = 5000;
-					AirFieldreq.responseType = 'text';
-					AirFieldreq.send();
-				}
-			}
-			GetAirField()
-			setInterval(GetAirField, 250);
 
 			var C = 'X';
 			var U = 'X';
@@ -220,10 +167,6 @@
 									TStr = TStr + String(M) + ':';
 									if (S < 10) TStr = TStr + '0';
 									TStr = TStr + String(S)
-//									TStr = TStr + String(S) + '.';
-//									if (MS < 100) TStr = TStr + '0';
-//									if (MS < 10) TStr = TStr + '0';
-//									TStr = TStr + String(MS);
 									document.getElementById('RemainingTime').textContent = TStr;
 								}
 							}
@@ -287,6 +230,31 @@
 			}
 			GetAutopilotData()
 			setInterval(GetAutopilotData, 250);
+
+			var AirFieldReqCompl = true;
+			function GetAirField(){
+				if (AirFieldReqCompl){
+					AirFieldReqCompl = false;
+					var AirFieldreq = new XMLHttpRequest();
+					AirFieldreq.onreadystatechange = function(){
+						if (AirFieldreq.readyState == 4){
+							if(AirFieldreq.status == 200){
+								var AirFieldPoints = AirFieldreq.response;
+								if (AirFieldPoints != null){
+									document.getElementById("AirField").setAttribute('points', AirFieldPoints);
+								}
+							}
+							AirFieldReqCompl = true;
+						}
+					}
+					AirFieldreq.open('GET', '/fly?SID=' + document.getElementById('SessionID').value + '&CMD=GetAirFieldPoints');
+					AirFieldreq.timeout = 5000;
+					AirFieldreq.responseType = 'text';
+					AirFieldreq.send();
+				}
+			}
+			GetAirField()
+			setInterval(GetAirField, 250);
 
 			document.addEventListener('keydown', function(event){
 				if (event.code == 'KeyC') C = 'C';
