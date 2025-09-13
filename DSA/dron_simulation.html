@@ -1,6 +1,4 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
+<html><head><base href="https://raw.githubusercontent.com/DvornikovDV/Study/main/DSA/dron_simulation.html">
 		<meta charset="utf-8">
 		<title>Fly</title>
 		<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -11,40 +9,32 @@
 		</style>
 	</head>
 	<body>
-		<input id="SessionID" value="27332eca7c617ebdacfcd570e6d2a123" hidden></input>
+		<input id="SessionID" value="27332eca7c617ebdacfcd570e6d2a123" hidden="">
 
-		<svg
-			version="1.1"
-			xmlns="http://www.w3.org/2000/svg"
-			xmlns:xlink="http://www.w3.org/1999/xlink"
-			xmlns:ev="http://www.w3.org/2001/xml-events"
-			baseProfile="full"
-			width="99.4%"
-			height="99.4%"
-			viewBox="0 0 1920 1080"
-			style="background-color:black">
-			<rect id="bgr" onclick="ShowAutopilotData = !ShowAutopilotData" x="0" y="0" width="1920" height="1080" fill=rgb(224,224,224) stroke-width="0"/>
+		<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" baseProfile="full" width="99.4%" height="99.4%" viewBox="0 0 1920 1080" style="background-color:black">
+			<rect id="bgr" onclick="ShowAutopilotData = !ShowAutopilotData" x="0" y="0" width="1920" height="1080" fill="rgb(224,224,224)" stroke-width="0"></rect>
 
-			<polygon id="Land" onclick="ShowTrueLand = !ShowTrueLand" points="0,1000, 200,500, 400,750, 600,550, 800,900, 1000,900, 1200,800, 1400,650, 1600,950, 1800,500, 1920,700, 1920,1080, 0,1080" stroke="green" fill=rgb(142,103,64) stroke-width="5"/>
-			<polygon id="AirField" points="810,900,830,880,880,880,900,900" stroke="black" fill="gray" stroke-width="4"/>
+			<polygon id="Land" onclick="ShowTrueLand = !ShowTrueLand" points="0,800, 200,500, 400,750, 600,550, 800,900, 1000,900, 1200,800, 1400,650, 1600,950, 1800,500, 1920,700, 1920,1080, 0,1080" stroke="green" fill="rgb(142,103,64)" stroke-width="5"></polygon>
+			<polygon id="AirField" points="810,900,830,880,880,880,900,900
+    " stroke="black" fill="gray" stroke-width="5"></polygon>
 
-			<polyline id="AutopilotLand" points="0,1080,1920,1080" fill="none" stroke="red" stroke-width="3" visibility="hidden"/>
-			<polyline id="AutopilotWPs" points="0,1080,1920,1080" fill="none" stroke="yellow" stroke-width="3" visibility="hidden"/>
+			<polyline id="AutopilotLand" points="0,1080,1920,1080" fill="none" stroke="red" stroke-width="3" visibility="hidden"></polyline>
+			<polyline id="AutopilotWPs" points="0,1080,1920,1080" fill="none" stroke="yellow" stroke-width="3" visibility="hidden"></polyline>
 
-			<g id="Korabl" transform="translate(1700,100)">
+			<g id="Korabl" transform="translate(840,840)">
 				<g id="IsAlive" visibility="show">
-					<polygon id="En1" points="1,25,13,25,6,37" stroke="red" fill="yellow" stroke-width="2" visibility="hidden"/>
-					<polygon id="En2" points="14,30,26,30,20,40" stroke="red" fill="yellow" stroke-width="2" visibility="hidden"/>
-					<polygon id="En3" points="27,25,39,25,34,37" stroke="red" fill="yellow" stroke-width="2" visibility="hidden"/>
-					<line x1="12" y1="20" x2="12" y2="38" stroke="black" stroke-width="4"/>
-					<line x1="28" y1="20" x2="28" y2="38" stroke="black" stroke-width="4"/>
-					<line x1="7" y1="38" x2="17" y2="38" stroke="black" stroke-width="4"/>
-					<line x1="23" y1="38" x2="33" y2="38" stroke="black" stroke-width="4"/>
-					<ellipse cx="20" cy="12" rx="9" ry="10" fill=rgb(127,127,127) stroke="black" stroke-width="4"/>
-					<ellipse cx="20" cy="22" rx="18" ry="7" fill=rgb(127,127,127) stroke="black" stroke-width="4"/>
+					<polygon id="En1" points="1,25,13,25,6,37" stroke="red" fill="yellow" stroke-width="2" visibility="hidden"></polygon>
+					<polygon id="En2" points="14,30,26,30,20,40" stroke="red" fill="yellow" stroke-width="2" visibility="hidden"></polygon>
+					<polygon id="En3" points="27,25,39,25,34,37" stroke="red" fill="yellow" stroke-width="2" visibility="hidden"></polygon>
+					<line x1="12" y1="20" x2="12" y2="38" stroke="black" stroke-width="4"></line>
+					<line x1="28" y1="20" x2="28" y2="38" stroke="black" stroke-width="4"></line>
+					<line x1="7" y1="38" x2="17" y2="38" stroke="black" stroke-width="4"></line>
+					<line x1="23" y1="38" x2="33" y2="38" stroke="black" stroke-width="4"></line>
+					<ellipse cx="20" cy="12" rx="9" ry="10" fill="rgb(127,127,127)" stroke="black" stroke-width="4"></ellipse>
+					<ellipse cx="20" cy="22" rx="18" ry="7" fill="rgb(127,127,127)" stroke="black" stroke-width="4"></ellipse>
 				</g>
 				<g id="IsDead" visibility="hidden">
-					<polygon points="20,0,25,10,35,5,30,15,40,20,30,25,35,35,25,30,20,40,15,30,5,35,10,25,0,20,10,15,5,5,15,10" stroke="red" fill="yellow" stroke-width="5"/>
+					<polygon points="20,0,25,10,35,5,30,15,40,20,30,25,35,35,25,30,20,40,15,30,5,35,10,25,0,20,10,15,5,5,15,10" stroke="red" fill="yellow" stroke-width="5"></polygon>
 				</g>
 			</g>
 
@@ -52,15 +42,18 @@
 				<text x="0" y="25" font-size="20" font-weight="bold" font-family="Arial">Крен:</text><text id="Angle" x="120" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
 				<text x="250" y="25" font-size="20" font-weight="bold" font-family="Arial">Вращение:</text><text id="RS" x="430" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
 				<text x="550" y="25" font-size="20" font-weight="bold" font-family="Arial">Скорость X:</text><text id="HS" x="740" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x="860" y="25" font-size="20" font-weight="bold" font-family="Arial">X:</text><text id="X" x="970" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x="1070" y="25" font-size="20" font-weight="bold" font-family="Arial">Y:</text><text id="Y" x="1180" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="860" y="25" font-size="20" font-weight="bold" font-family="Arial">X:</text><text id="X" x="970" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">840</text>
+				<text x="1070" y="25" font-size="20" font-weight="bold" font-family="Arial">Y:</text><text id="Y" x="1180" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">840
+    
+</text>
 				<text x="1280" y="25" font-size="20" font-weight="bold" font-family="Arial">Скорость Y:</text><text id="VS" x="1470" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
-				<text x="1590" y="25" font-size="20" font-weight="bold" font-family="Arial">Высота:</text><text id="Height" x="1750" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0.0</text>
+				<text x="1590" y="25" font-size="20" font-weight="bold" font-family="Arial">Высота:</text><text id="Height" x="1750" y="25" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">950
+</text>
 			</g>
 			<g transform="translate(20,1030)">
 				<text x="0" y="30" font-size="20" font-weight="bold" font-family="Arial">Крушения:</text><text id="Crashes" x="220" y="30" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
-				<text x="0" y="0" font-size="20" font-weight="bold" font-family="Arial">Посадки:</text><text id="Landings" x="220" y="0" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
-				<text x="0" y="-30" font-size="20" font-weight="bold" font-family="Arial">Время:</text><text id="RemainingTime" x="220" y="-30" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">0</text>
+				<text x="0" y="0" font-size="20" font-weight="bold" font-family="Arial">Посадки:</text><text id="Landings" x="220" y="0" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">1</text>
+				<text x="0" y="-30" font-size="20" font-weight="bold" font-family="Arial">Время:</text><text id="RemainingTime" x="220" y="-30" font-size="20" font-weight="bold" font-family="Arial" text-anchor="end">194</text>
 			</g>
 		</svg>
 
@@ -282,12 +275,227 @@
 				if (event.key == '3') M = 'X';
 			});
 		</script>
-	</body>
-</html>
+	
 
 
 
 
 
+<script>
+			var ShowTrueLand = true;
+			var LandReqCompl = true;
 
+			var C = 'X';
+			var U = 'X';
+			var D = 'X';
+			var L = 'X';
+			var R = 'X';
+			var Rst = 'X';
+			var M = 'X';
+			var KData = [];
+			var KorablReqCompl = true;
+			function GetKorabl(){
+				if (KorablReqCompl){
+					KorablReqCompl = false;
+					var Korablreq = new XMLHttpRequest();
+					Korablreq.onreadystatechange = function(){
+						if (Korablreq.readyState == 4){
+							if(Korablreq.status == 200){
+								KData = Korablreq.response;
+								if (KData != null){
+									var Korabl = document.getElementById("Korabl");
+									Korabl.setAttribute('transform', 'translate(' + String(KData[0] - 20) + ',' + String(1060 - KData[1]) + ') rotate(' + KData[2] + ',' + KData[3] + ',' + KData[4] + ')');
+									var En1 = document.getElementById("En1");
+									if (KData[5] == '1'){
+										En1.setAttribute('visibility', 'show');
+									} else {
+										En1.setAttribute('visibility', 'hidden');
+									}
+									var En2 = document.getElementById("En2");
+									if (KData[6] == '1'){
+										En2.setAttribute('visibility', 'show');
+									} else {
+										En2.setAttribute('visibility', 'hidden');
+									}
+									var En3 = document.getElementById("En3");
+									if (KData[7] == '1'){
+										En3.setAttribute('visibility', 'show');
+									} else {
+										En3.setAttribute('visibility', 'hidden');
+									}
+									var IsAlive = document.getElementById("IsAlive");
+									var IsDead = document.getElementById("IsDead");
+									if (KData[8] == '1'){
+										IsAlive.setAttribute('visibility', 'show');
+										IsDead.setAttribute('visibility', 'hidden');
+									} else {
+										IsAlive.setAttribute('visibility', 'hidden');
+										IsDead.setAttribute('visibility', 'show');
+									}
+									if ((KData[2] * 10) % 10 == 0){
+										document.getElementById('Angle').textContent = String(KData[2]) + '.0';
+									} else {
+										document.getElementById('Angle').textContent = KData[2];
+									}
+									if ((KData[9] * 10) % 10 == 0){
+										document.getElementById('RS').textContent = String(KData[9]) + '.0';
+									} else {
+										document.getElementById('RS').textContent = KData[9];
+									}
+									if ((KData[10] * 10) % 10 == 0){
+										document.getElementById('HS').textContent = String(KData[10]) + '.0';
+									} else {
+										document.getElementById('HS').textContent = KData[10];
+									}
+									if ((KData[0] * 10) % 10 == 0){
+										document.getElementById('X').textContent = String(KData[0]) + '.0';
+									} else {
+										document.getElementById('X').textContent = KData[0];
+									}
+									if ((KData[1] * 10) % 10 == 0){
+										document.getElementById('Y').textContent = String(KData[1]) + '.0';
+									} else {
+										document.getElementById('Y').textContent = KData[1];
+									}
+									if ((KData[11] * 10) % 10 == 0){
+										document.getElementById('VS').textContent = String(KData[11]) + '.0';
+									} else {
+										document.getElementById('VS').textContent = KData[11];
+									}
+									if ((KData[12] * 10) % 10 == 0){
+										document.getElementById('Height').textContent = String(KData[12]) + '.0';
+									} else {
+										document.getElementById('Height').textContent = KData[12];
+									}
+									document.getElementById('Crashes').textContent = KData[13];
+									document.getElementById('Landings').textContent = KData[14];
+									var T = KData[15] * 1000;
+									var MS = T % 1000;
+									T = (T - MS) / 1000;
+									var S = T % 60;
+									T = (T - S) / 60;
+									var M = T % 60;
+									T = (T - M) / 60;
+									var H = T;
+									var TStr = '';
+									if (H < 10) TStr = TStr + '0';
+									TStr = TStr + String(H) + ':';
+									if (M < 10) TStr = TStr + '0';
+									TStr = TStr + String(M) + ':';
+									if (S < 10) TStr = TStr + '0';
+									TStr = TStr + String(S)
+									document.getElementById('RemainingTime').textContent = TStr;
+								}
+							}
+							KorablReqCompl = true;
+						}
+					}
+					Korablreq.open('GET', '/fly?SID=' + document.getElementById('SessionID').value + '&CMD=GetKorabl' + '&Value=' + C + U + D + L + R + Rst + M);
+					Korablreq.timeout = 5000;
+					Korablreq.responseType = 'json';
+					Korablreq.send();
+				}
+			}
+			GetKorabl()
+			setInterval(GetKorabl, 10);
 
+			var ShowAutopilotData = false;
+			var AutopilotDataReqCompl = true;
+			function GetAutopilotData(){
+				if (AutopilotDataReqCompl){
+					AutopilotDataReqCompl = false;
+					var AutopilotDatareq = new XMLHttpRequest();
+					AutopilotDatareq.onreadystatechange = function(){
+						if (AutopilotDatareq.readyState == 4){
+							if(AutopilotDatareq.status == 200){
+								var AutopilotData = AutopilotDatareq.response;
+								if (AutopilotData[0] != null){
+									document.getElementById("AutopilotLand").setAttribute('points', AutopilotData[0]);
+									if (ShowAutopilotData){
+										document.getElementById("AutopilotLand").setAttribute('visibility', 'show');
+										if (!ShowTrueLand){
+											document.getElementById("Land").setAttribute('points', '0,1080,' + AutopilotData[0] + ',1920,1080');
+										}
+									} else {
+										document.getElementById("AutopilotLand").setAttribute('visibility', 'hidden');
+									}
+								}
+								if (AutopilotData[1] != null){
+									document.getElementById("AutopilotWPs").setAttribute('points', AutopilotData[1]);
+									if (ShowAutopilotData){
+										document.getElementById("AutopilotWPs").setAttribute('visibility', 'show');
+									} else {
+										document.getElementById("AutopilotWPs").setAttribute('visibility', 'hidden');
+									}
+								}
+								if (AutopilotData[2] != null){
+									if (ShowTrueLand || !ShowAutopilotData || AutopilotData[2] == 1){
+										document.getElementById("AirField").setAttribute('visibility', 'show');
+									} else {
+										document.getElementById("AirField").setAttribute('visibility', 'hidden');
+									}
+								}
+							}
+							AutopilotDataReqCompl = true;
+						}
+					}
+					AutopilotDatareq.open('GET', '/fly?SID=' + document.getElementById('SessionID').value + '&CMD=GetAutopilotData');
+					AutopilotDatareq.timeout = 5000;
+					AutopilotDatareq.responseType = 'json';
+					AutopilotDatareq.send();
+				}
+			}
+			GetAutopilotData()
+			setInterval(GetAutopilotData, 250);
+
+			var AirFieldReqCompl = true;
+			function GetAirField(){
+				if (AirFieldReqCompl){
+					AirFieldReqCompl = false;
+					var AirFieldreq = new XMLHttpRequest();
+					AirFieldreq.onreadystatechange = function(){
+						if (AirFieldreq.readyState == 4){
+							if(AirFieldreq.status == 200){
+								var AirFieldPoints = AirFieldreq.response;
+								if (AirFieldPoints != null){
+									document.getElementById("AirField").setAttribute('points', AirFieldPoints);
+								}
+							}
+							AirFieldReqCompl = true;
+						}
+					}
+					AirFieldreq.open('GET', '/fly?SID=' + document.getElementById('SessionID').value + '&CMD=GetAirFieldPoints');
+					AirFieldreq.timeout = 5000;
+					AirFieldreq.responseType = 'text';
+					AirFieldreq.send();
+				}
+			}
+			GetAirField()
+			setInterval(GetAirField, 250);
+
+			document.addEventListener('keydown', function(event){
+				if (event.code == 'KeyC') C = 'C';
+				if (event.key == 'ArrowUp') U = 'U';
+				if (event.key == 'ArrowDown') D = 'D';
+				if (event.key == 'ArrowLeft') L = 'L';
+				if (event.key == 'ArrowRight') R = 'R';
+				if (event.key == 'F2') Rst = 'R';
+				if (event.key == '0') M = '0';
+				if (event.key == '1') M = '1';
+				if (event.key == '2') M = '2';
+				if (event.key == '3') M = '3';
+			});
+
+			document.addEventListener('keyup', function(){
+				if (event.code == 'KeyC') C = 'X';
+				if (event.key == 'ArrowUp') U = 'X';
+				if (event.key == 'ArrowDown') D = 'X';
+				if (event.key == 'ArrowLeft') L = 'X';
+				if (event.key == 'ArrowRight') R = 'X';
+				if (event.key == 'F2') Rst = 'X';
+				if (event.key == '0') M = 'X';
+				if (event.key == '1') M = 'X';
+				if (event.key == '2') M = 'X';
+				if (event.key == '3') M = 'X';
+			});
+		</script></body></html>
